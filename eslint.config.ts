@@ -53,6 +53,18 @@ export default ts.config(
     },
   },
 
+  // ✅ Add support for standalone Node scripts (like check-db.js)
+  {
+    files: ["*.js"],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+    rules: {
+      // Optional: allow console in standalone scripts
+      "no-console": "off",
+    },
+  },
+
   // React/Browser environment (frontend apps)
   {
     files: [
