@@ -67,16 +67,11 @@ app.use("*", async (c, next) => {
 
   const env = {
     ...cf.env,
-    ...Object.fromEntries(
-      secretKeys.map((key) => [key, (process.env[key] || cf.env[key]) ?? ""]),
-    ),
+    ...Object.fromEntries(secretKeys.map((key) => [key, (process.env[key] || cf.env[key]) ?? ""])),
     APP_NAME: process.env.APP_NAME || cf.env.APP_NAME || "Example",
     APP_ORIGIN:
       // Prefer origin set by `apps/app` at runtime
-      c.req.header("x-forwarded-origin") ||
-      process.env.APP_ORIGIN ||
-      c.env.APP_ORIGIN ||
-      "http://localhost:5173",
+      c.req.header("x-forwarded-origin") || process.env.APP_ORIGIN || c.env.APP_ORIGIN || "http://localhost:5173",
   };
 
   c.set("db", db);

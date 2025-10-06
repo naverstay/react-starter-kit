@@ -15,15 +15,7 @@ import ts from "typescript-eslint";
 export default ts.config(
   // Global ignores
   {
-    ignores: [
-      ".cache",
-      ".venv",
-      "**/.astro/**/*",
-      "**/dist",
-      "**/node_modules",
-      "docs/.vitepress/cache",
-      "docs/.vitepress/dist",
-    ],
+    ignores: [".cache", ".venv", "**/.astro/**/*", "**/dist", "**/node_modules", "docs/.vitepress/cache", "docs/.vitepress/dist"],
   },
 
   // Base configs for all files
@@ -41,13 +33,7 @@ export default ts.config(
 
   // Node.js environment (servers, scripts, config files)
   {
-    files: [
-      "**/*.config.{js,ts,mjs}",
-      "**/scripts/**/*",
-      "apps/api/**/*",
-      "db/**/*",
-      "infra/**/*",
-    ],
+    files: ["**/*.config.{js,ts,mjs}", "**/scripts/**/*", "apps/api/**/*", "db/**/*", "infra/**/*"],
     languageOptions: {
       globals: { ...globals.node },
     },
@@ -67,11 +53,7 @@ export default ts.config(
 
   // React/Browser environment (frontend apps)
   {
-    files: [
-      "apps/app/**/*.{ts,tsx}",
-      "apps/web/**/*.{ts,tsx}",
-      "packages/ui/**/*.tsx",
-    ],
+    files: ["apps/app/**/*.{ts,tsx}", "apps/web/**/*.{ts,tsx}", "packages/ui/**/*.tsx"],
     ...react.configs["recommended-typescript"],
     rules: {
       "@eslint-react/dom/no-missing-iframe-sandbox": "off",

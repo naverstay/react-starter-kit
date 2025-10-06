@@ -5,8 +5,7 @@ import { useRouterState } from "@tanstack/react-router";
 
 export function RootError() {
   const routerState = useRouterState();
-  const err = routerState.matches.find((match) => match.error)
-    ?.error as RouteError | null;
+  const err = routerState.matches.find((match) => match.error)?.error as RouteError | null;
 
   return (
     <div
@@ -25,8 +24,7 @@ export function RootError() {
           color: "#333",
         }}
       >
-        <strong style={{ fontWeight: 400 }}>Error {err?.status || 500}</strong>:{" "}
-        {err?.statusText ?? err?.message ?? "Unknown error"}
+        <strong style={{ fontWeight: 400 }}>Error {err?.status || 500}</strong>: {err?.statusText ?? err?.message ?? "Unknown error"}
       </h1>
     </div>
   );

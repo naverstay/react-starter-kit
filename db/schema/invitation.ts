@@ -34,9 +34,7 @@ export const invitation = pgTable("invitation", {
     withTimezone: true,
     mode: "date",
   }).notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
 });
 
 // —————————————————————————————————————————————————————————————————————————————

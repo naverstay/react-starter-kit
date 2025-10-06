@@ -11,8 +11,7 @@ const t = initTRPC.context<TRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? flattenError(error.cause) : null,
+        zodError: error.cause instanceof ZodError ? flattenError(error.cause) : null,
       },
     };
   },

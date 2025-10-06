@@ -1,13 +1,7 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  EmailVerification,
-  OTPEmail,
-  PasswordReset,
-  renderEmailToHtml,
-  renderEmailToText,
-} from "@repo/email";
+import { EmailVerification, OTPEmail, PasswordReset, renderEmailToHtml, renderEmailToText } from "@repo/email";
 import { Resend } from "resend";
 import { z } from "zod";
 import type { Env } from "./env";
@@ -50,10 +44,7 @@ export function createResendClient(apiKey: string): Resend {
  * @returns Promise resolving to Resend response
  * @throws Error if email validation fails or sending fails
  */
-export async function sendEmail(
-  env: Pick<Env, "RESEND_API_KEY" | "RESEND_EMAIL_FROM">,
-  options: EmailOptions,
-) {
+export async function sendEmail(env: Pick<Env, "RESEND_API_KEY" | "RESEND_EMAIL_FROM">, options: EmailOptions) {
   // Email validation schema using Zod (only validates format, not deliverability)
   const emailSchema = z.email();
 
@@ -82,16 +73,12 @@ export async function sendEmail(
 
     // Check if Resend returned an error in the response
     if (result.error) {
-      throw new Error(
-        `Resend API error: ${result.error.message || result.error.name || "Unknown error"}`,
-      );
+      throw new Error(`Resend API error: ${result.error.message || result.error.name || "Unknown error"}`);
     }
 
     return result;
   } catch (error) {
-    throw new Error(
-      `Failed to send email: ${error instanceof Error ? error.message : "Unknown error"}`,
-    );
+    throw new Error(`Failed to send email: ${error instanceof Error ? error.message : "Unknown error"}`);
   }
 }
 
@@ -108,10 +95,7 @@ export async function sendEmail(
  * ```
  */
 export async function sendVerificationEmail(
-  env: Pick<
-    Env,
-    "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN"
-  >,
+  env: Pick<Env, "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN">,
   options: {
     user: { email: string; name?: string };
     url: string;
@@ -147,10 +131,7 @@ export async function sendVerificationEmail(
  * ```
  */
 export async function sendPasswordReset(
-  env: Pick<
-    Env,
-    "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN"
-  >,
+  env: Pick<Env, "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN">,
   options: {
     user: { email: string; name?: string };
     url: string;
@@ -187,10 +168,7 @@ export async function sendPasswordReset(
  * ```
  */
 export async function sendOTP(
-  env: Pick<
-    Env,
-    "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN"
-  >,
+  env: Pick<Env, "RESEND_API_KEY" | "RESEND_EMAIL_FROM" | "APP_NAME" | "APP_ORIGIN">,
   options: {
     email: string;
     otp: string;

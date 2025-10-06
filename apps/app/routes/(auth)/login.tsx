@@ -28,15 +28,10 @@ export const Route = createFileRoute("/(auth)/login")({
   // 2. Provider authenticates → returns to /api/auth/callback/<provider>
   // 3. API validates OAuth → redirects here with returnUrl=<destination>
   // 4. Component verifies session → auto-navigates to final destination
-  validateSearch: (
-    search: Record<string, unknown>,
-  ): { redirect: string; returnUrl?: string } => {
+  validateSearch: (search: Record<string, unknown>): { redirect: string; returnUrl?: string } => {
     return {
       redirect: getSafeRedirectUrl(search.redirect),
-      returnUrl:
-        typeof search.returnUrl === "string"
-          ? getSafeRedirectUrl(search.returnUrl)
-          : undefined,
+      returnUrl: typeof search.returnUrl === "string" ? getSafeRedirectUrl(search.returnUrl) : undefined,
     };
   },
 });
@@ -75,8 +70,7 @@ function LoginPage() {
           await invalidateSession(queryClient);
 
           // [AUTO REDIRECT] Route to original destination or default
-          const finalDestination =
-            returnUrl || authConfig.oauth.postLoginRedirect;
+          const finalDestination = returnUrl || authConfig.oauth.postLoginRedirect;
           navigate({ to: finalDestination }).catch(() => {
             // Hard redirect fallback ensures navigation on router failure
             window.location.href = finalDestination;
@@ -123,9 +117,7 @@ function LoginPage() {
         <div className="w-full max-w-sm text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
           <h2 className="text-lg font-semibold mb-2">Completing sign in...</h2>
-          <p className="text-muted-foreground text-sm">
-            You'll be redirected to your destination shortly.
-          </p>
+          <p className="text-muted-foreground text-sm">You'll be redirected to your destination shortly.</p>
         </div>
       </div>
     );

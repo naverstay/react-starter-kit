@@ -11,12 +11,7 @@ interface PasswordResetProps {
   appUrl?: string;
 }
 
-export function PasswordReset({
-  userName,
-  resetUrl,
-  appName,
-  appUrl,
-}: PasswordResetProps) {
+export function PasswordReset({ userName, resetUrl, appName, appUrl }: PasswordResetProps) {
   const preview = `Reset your password for ${appName || "your account"}`;
 
   return (
@@ -25,10 +20,7 @@ export function PasswordReset({
 
       <Text style={paragraph}>Hi{userName ? ` ${userName}` : ""},</Text>
 
-      <Text style={paragraph}>
-        We received a request to reset your password. Click the button below to
-        choose a new password.
-      </Text>
+      <Text style={paragraph}>We received a request to reset your password. Click the button below to choose a new password.</Text>
 
       <Section style={buttonContainer}>
         <Button href={resetUrl} style={button}>
@@ -36,26 +28,20 @@ export function PasswordReset({
         </Button>
       </Section>
 
-      <Text style={paragraph}>
-        Or copy and paste this URL into your browser:
-      </Text>
+      <Text style={paragraph}>Or copy and paste this URL into your browser:</Text>
 
       <Text style={linkText}>{resetUrl}</Text>
 
       {/* NOTE: 1-hour expiration balances security vs user convenience */}
       <Text style={paragraph}>
-        <strong>This password reset link will expire in 1 hour</strong> for
-        security reasons.
+        <strong>This password reset link will expire in 1 hour</strong> for security reasons.
       </Text>
 
-      <Text style={paragraph}>
-        If you didn't request a password reset, you can safely ignore this
-        email. Your password will remain unchanged.
-      </Text>
+      <Text style={paragraph}>If you didn't request a password reset, you can safely ignore this email. Your password will remain unchanged.</Text>
 
       <Text style={securityNote}>
-        <strong>Security tip:</strong> Never share this reset link with anyone.
-        Our support team will never ask for your password or login credentials.
+        <strong>Security tip:</strong> Never share this reset link with anyone. Our support team will never ask for your password or login
+        credentials.
       </Text>
     </BaseTemplate>
   );

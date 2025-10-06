@@ -17,13 +17,7 @@ import type { Env } from "./env";
  */
 type AuthEnv = Pick<
   Env,
-  | "APP_NAME"
-  | "APP_ORIGIN"
-  | "BETTER_AUTH_SECRET"
-  | "GOOGLE_CLIENT_ID"
-  | "GOOGLE_CLIENT_SECRET"
-  | "RESEND_API_KEY"
-  | "RESEND_EMAIL_FROM"
+  "APP_NAME" | "APP_ORIGIN" | "BETTER_AUTH_SECRET" | "GOOGLE_CLIENT_ID" | "GOOGLE_CLIENT_SECRET" | "RESEND_API_KEY" | "RESEND_EMAIL_FROM"
 >;
 
 /**
@@ -49,10 +43,7 @@ type AuthEnv = Pick<
  * });
  * ```
  */
-export function createAuth(
-  db: DB,
-  env: AuthEnv,
-): ReturnType<typeof betterAuth> {
+export function createAuth(db: DB, env: AuthEnv): ReturnType<typeof betterAuth> {
   // Extract domain from APP_ORIGIN for passkey rpID
   const appUrl = new URL(env.APP_ORIGIN);
   const rpID = appUrl.hostname;

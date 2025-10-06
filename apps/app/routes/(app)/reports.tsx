@@ -57,18 +57,14 @@ function Reports() {
     <div className="p-6 space-y-6">
       <div>
         <h2 className="text-2xl font-bold">Reports</h2>
-        <p className="text-muted-foreground">
-          Generate and download various reports for your data.
-        </p>
+        <p className="text-muted-foreground">Generate and download various reports for your data.</p>
       </div>
 
       {/* Filters */}
       <Card>
         <CardHeader>
           <CardTitle>Filters</CardTitle>
-          <CardDescription>
-            Filter reports by type and date range
-          </CardDescription>
+          <CardDescription>Filter reports by type and date range</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -111,9 +107,7 @@ function Reports() {
       <Card>
         <CardHeader>
           <CardTitle>Generate New Report</CardTitle>
-          <CardDescription>
-            Create a custom report based on your needs
-          </CardDescription>
+          <CardDescription>Create a custom report based on your needs</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -146,10 +140,7 @@ function Reports() {
         <CardContent>
           <div className="space-y-4">
             {reports.map((report) => (
-              <div
-                key={report.id}
-                className="flex items-center justify-between p-4 border rounded-lg"
-              >
+              <div key={report.id} className="flex items-center justify-between p-4 border rounded-lg">
                 <div className="flex items-center gap-4">
                   <FileText className="h-8 w-8 text-muted-foreground" />
                   <div>
@@ -166,18 +157,12 @@ function Reports() {
                 <div className="flex items-center gap-2">
                   <span
                     className={`px-2 py-1 text-xs rounded-full ${
-                      report.status === "Ready"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-yellow-100 text-yellow-700"
+                      report.status === "Ready" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"
                     }`}
                   >
                     {report.status}
                   </span>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    disabled={report.status !== "Ready"}
-                  >
+                  <Button size="sm" variant="ghost" disabled={report.status !== "Ready"}>
                     <Download className="h-4 w-4" />
                   </Button>
                 </div>

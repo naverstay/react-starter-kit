@@ -40,10 +40,7 @@ function isAuthError(error: Error): boolean {
 }
 
 // Fallback component for auth errors
-function AuthErrorFallback({
-  error,
-  resetErrorBoundary,
-}: AuthErrorFallbackProps) {
+function AuthErrorFallback({ error, resetErrorBoundary }: AuthErrorFallbackProps) {
   const handleRetry = () => {
     // Reset React Query errors and component errors
     // NOTE: resetQueries() clears error state but preserves cached data,
@@ -67,8 +64,7 @@ function AuthErrorFallback({
         <AlertCircle className="mx-auto mb-4 h-12 w-12 text-destructive" />
         <h1 className="mb-2 text-2xl font-bold">Authentication Required</h1>
         <p className="mb-6 text-muted-foreground">
-          {error.message === "Unauthorized" ||
-          (error as ErrorWithStatus)?.status === 401
+          {error.message === "Unauthorized" || (error as ErrorWithStatus)?.status === 401
             ? "Your session has expired. Please sign in again."
             : "You need to sign in to access this page."}
         </p>
@@ -90,10 +86,7 @@ interface AuthErrorBoundaryProps {
 // General error fallback that handles both auth and other errors
 // This wrapper ensures auth errors get special UI treatment while preserving
 // generic error handling for all other failures
-function ErrorFallbackWrapper({
-  error,
-  resetErrorBoundary,
-}: AuthErrorFallbackProps) {
+function ErrorFallbackWrapper({ error, resetErrorBoundary }: AuthErrorFallbackProps) {
   // If it's not an auth error, show a generic error message
   if (!isAuthError(error)) {
     return (
@@ -101,9 +94,7 @@ function ErrorFallbackWrapper({
         <div className="mx-auto max-w-md text-center">
           <AlertCircle className="mx-auto mb-4 h-12 w-12 text-destructive" />
           <h1 className="mb-2 text-2xl font-bold">Something went wrong</h1>
-          <p className="mb-6 text-muted-foreground">
-            {error.message || "An unexpected error occurred"}
-          </p>
+          <p className="mb-6 text-muted-foreground">{error.message || "An unexpected error occurred"}</p>
           <Button onClick={resetErrorBoundary}>Try Again</Button>
         </div>
       </div>
@@ -111,9 +102,7 @@ function ErrorFallbackWrapper({
   }
 
   // For auth errors, use the auth-specific UI
-  return (
-    <AuthErrorFallback error={error} resetErrorBoundary={resetErrorBoundary} />
-  );
+  return <AuthErrorFallback error={error} resetErrorBoundary={resetErrorBoundary} />;
 }
 
 // Modern auth error boundary using react-error-boundary

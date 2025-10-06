@@ -209,9 +209,7 @@ export const user = pgTable("user", {
   isAnonymous: boolean("is_anonymous")
     .$default(() => false)
     .notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
     .defaultNow()
     .$onUpdate(() => new Date())
@@ -479,11 +477,7 @@ Implement RBAC using the member roles:
 ```typescript
 // Check if user is organization admin
 const membership = await db.query.member.findFirst({
-  where: and(
-    eq(member.userId, userId),
-    eq(member.organizationId, orgId),
-    eq(member.role, "admin"),
-  ),
+  where: and(eq(member.userId, userId), eq(member.organizationId, orgId), eq(member.role, "admin")),
 });
 
 // Get all teams user belongs to

@@ -98,10 +98,7 @@ if (!existsSync(backupsDir)) {
   console.log(`📁 Created backups directory: ${backupsDir}`);
 }
 
-const outputPath = resolve(
-  backupsDir,
-  `dump${envSuffix}${typeSuffix}${tableSuffix}-${timestamp}.sql`,
-);
+const outputPath = resolve(backupsDir, `dump${envSuffix}${typeSuffix}${tableSuffix}-${timestamp}.sql`);
 
 pgDumpArgs.push(`--file=${outputPath}`);
 
@@ -109,9 +106,7 @@ pgDumpArgs.push(`--file=${outputPath}`);
 try {
   await $`which pg_dump`.quiet();
 } catch {
-  console.error(
-    "❌ pg_dump not found. Please install PostgreSQL client tools.",
-  );
+  console.error("❌ pg_dump not found. Please install PostgreSQL client tools.");
   process.exit(1);
 }
 

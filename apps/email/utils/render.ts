@@ -9,9 +9,7 @@ import type { ReactElement } from "react";
  * @param component React email component
  * @returns HTML string
  */
-export async function renderEmailToHtml(
-  component: ReactElement,
-): Promise<string> {
+export async function renderEmailToHtml(component: ReactElement): Promise<string> {
   return await render(component, { pretty: true });
 }
 
@@ -20,8 +18,6 @@ export async function renderEmailToHtml(
  * @param component React email component
  * @returns Plain text string
  */
-export async function renderEmailToText(
-  component: ReactElement,
-): Promise<string> {
+export async function renderEmailToText(component: ReactElement): Promise<string> {
   return await render(component, { plainText: true });
 }

@@ -1,15 +1,7 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@repo/ui";
+import { Button, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@repo/ui";
 import * as React from "react";
 import { LoginForm } from "./login-form";
 
@@ -40,9 +32,7 @@ export function LoginDialog() {
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="sr-only">
           <DialogTitle>Sign in to your account</DialogTitle>
-          <DialogDescription>
-            Choose your preferred sign in method
-          </DialogDescription>
+          <DialogDescription>Choose your preferred sign in method</DialogDescription>
         </DialogHeader>
         <LoginForm
           variant="modal"
@@ -78,9 +68,7 @@ export function useLoginDialog() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader className="sr-only">
             <DialogTitle>Sign in to your account</DialogTitle>
-            <DialogDescription>
-              Choose your preferred sign in method
-            </DialogDescription>
+            <DialogDescription>Choose your preferred sign in method</DialogDescription>
           </DialogHeader>
           <LoginForm
             variant="modal"

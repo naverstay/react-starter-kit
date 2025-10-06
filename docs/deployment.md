@@ -76,9 +76,7 @@ For `apps/api/wrangler.jsonc`:
 ```jsonc
 {
   "name": "your-app-api",
-  "routes": [
-    { "pattern": "yourdomain.com/api*", "zone_name": "yourdomain.com" },
-  ],
+  "routes": [{ "pattern": "yourdomain.com/api*", "zone_name": "yourdomain.com" }],
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE_CACHED",

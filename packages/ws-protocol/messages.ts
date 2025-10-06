@@ -45,13 +45,7 @@ export type ErrorMessage = z.infer<typeof ErrorSchema>;
 /**
  * All possible message types for easy discrimination.
  */
-export const MessageSchema = z.discriminatedUnion("type", [
-  PingSchema,
-  PongSchema,
-  EchoSchema,
-  NotificationSchema,
-  ErrorSchema,
-]);
+export const MessageSchema = z.discriminatedUnion("type", [PingSchema, PongSchema, EchoSchema, NotificationSchema, ErrorSchema]);
 
 export type Message = z.infer<typeof MessageSchema>;
 export type MessageType = Message["type"];

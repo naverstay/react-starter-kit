@@ -29,12 +29,7 @@ export function UserMenu() {
     return (
       <div className="px-3 py-2 text-sm text-destructive">
         Failed to load session
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => refetch()}
-          className="ml-2"
-        >
+        <Button variant="ghost" size="sm" onClick={() => refetch()} className="ml-2">
           <RefreshCw className="h-3 w-3" />
           Retry
         </Button>
@@ -52,20 +47,13 @@ export function UserMenu() {
     <div className="p-4 border-t">
       <div className="flex items-center gap-3 px-3 py-2">
         <Avatar className="h-8 w-8">
-          <AvatarFallback>
-            {user.name?.[0]?.toUpperCase() || <User className="h-4 w-4" />}
-          </AvatarFallback>
+          <AvatarFallback>{user.name?.[0]?.toUpperCase() || <User className="h-4 w-4" />}</AvatarFallback>
         </Avatar>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium truncate">{user.name || "User"}</p>
           <p className="text-xs text-muted-foreground truncate">{user.email}</p>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => signOut(queryClient)}
-          title="Sign out"
-        >
+        <Button variant="ghost" size="icon" onClick={() => signOut(queryClient)} title="Sign out">
           <LogOut className="h-4 w-4" />
         </Button>
       </div>

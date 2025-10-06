@@ -13,10 +13,7 @@ interface UseLoginFormOptions {
   isExternallyLoading?: boolean;
 }
 
-export function useLoginForm({
-  onSuccess,
-  isExternallyLoading,
-}: UseLoginFormOptions = {}) {
+export function useLoginForm({ onSuccess, isExternallyLoading }: UseLoginFormOptions = {}) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);

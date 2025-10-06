@@ -14,13 +14,7 @@ interface OtpVerificationProps {
   isDisabled?: boolean;
 }
 
-export function OtpVerification({
-  email,
-  onSuccess,
-  onError,
-  onCancel,
-  isDisabled,
-}: OtpVerificationProps) {
+export function OtpVerification({ email, onSuccess, onError, onCancel, isDisabled }: OtpVerificationProps) {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -106,37 +100,18 @@ export function OtpVerification({
         pattern="[0-9]{6}"
         inputMode="numeric"
       />
-      <Button
-        type="submit"
-        variant="default"
-        className="w-full"
-        disabled={disabled || otp.length !== 6}
-      >
+      <Button type="submit" variant="default" className="w-full" disabled={disabled || otp.length !== 6}>
         Verify code
       </Button>
       <div className="flex gap-2">
-        <Button
-          type="button"
-          variant="ghost"
-          className="flex-1 text-sm"
-          onClick={onCancel}
-          disabled={disabled}
-        >
+        <Button type="button" variant="ghost" className="flex-1 text-sm" onClick={onCancel} disabled={disabled}>
           Change email
         </Button>
-        <Button
-          type="button"
-          variant="ghost"
-          className="flex-1 text-sm"
-          onClick={handleResendOtp}
-          disabled={disabled}
-        >
+        <Button type="button" variant="ghost" className="flex-1 text-sm" onClick={handleResendOtp} disabled={disabled}>
           Resend code
         </Button>
       </div>
-      <div className="text-xs text-muted-foreground text-center">
-        Code expires in 5 minutes
-      </div>
+      <div className="text-xs text-muted-foreground text-center">Code expires in 5 minutes</div>
     </form>
   );
 }

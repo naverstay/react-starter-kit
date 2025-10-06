@@ -40,13 +40,7 @@ async function updateComponents(): Promise<void> {
       console.log(`\n⏳ Updating ${component}...`);
 
       try {
-        await execCommand("bunx", [
-          "shadcn@latest",
-          "add",
-          component,
-          "--overwrite",
-          "--yes",
-        ]);
+        await execCommand("bunx", ["shadcn@latest", "add", component, "--overwrite", "--yes"]);
         console.log(`✅ ${component} updated successfully`);
       } catch (error) {
         console.error(`❌ Failed to update ${component}:`, error);
@@ -69,9 +63,7 @@ if (args.includes("--help") || args.includes("-h")) {
   console.log("🔄 shadcn/ui Component Updater");
   console.log("===============================\n");
   console.log("Usage:");
-  console.log(
-    "  bun run ui:update              Update all installed components",
-  );
+  console.log("  bun run ui:update              Update all installed components");
   console.log("  bun run ui:update <component>  Update a specific component");
   console.log("\nExamples:");
   console.log("  bun run ui:update");

@@ -2,11 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 import type { QueryClient } from "@tanstack/react-query";
-import {
-  queryOptions,
-  useQuery,
-  useSuspenseQuery,
-} from "@tanstack/react-query";
+import { queryOptions, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import type { Session, User } from "better-auth/types";
 import { auth } from "../auth";
 
@@ -102,17 +98,12 @@ export async function invalidateSession(queryClient: QueryClient) {
 }
 
 // Set session data optimistically
-export function setSessionData(
-  queryClient: QueryClient,
-  data: SessionData | null,
-) {
+export function setSessionData(queryClient: QueryClient, data: SessionData | null) {
   queryClient.setQueryData(sessionQueryKey, data);
 }
 
 // Get cached session data without refetching
-export function getCachedSession(
-  queryClient: QueryClient,
-): SessionData | null | undefined {
+export function getCachedSession(queryClient: QueryClient): SessionData | null | undefined {
   return queryClient.getQueryData(sessionQueryKey);
 }
 
@@ -131,10 +122,7 @@ export function isAuthenticated(queryClient: QueryClient): boolean {
 // Enhanced sign out with session invalidation and redirect
 // NOTE: Clears server session first, then invalidates all auth caches
 // This ensures clean state even if cache invalidation fails
-export async function signOut(
-  queryClient: QueryClient,
-  options?: { redirect?: boolean },
-) {
+export async function signOut(queryClient: QueryClient, options?: { redirect?: boolean }) {
   // Perform the actual sign out first
   await auth.signOut();
 

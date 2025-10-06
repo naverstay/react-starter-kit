@@ -11,9 +11,7 @@ async function addComponent(): Promise<void> {
     console.log("Usage:");
     console.log("  bun run ui:add <component>     Add a single component");
     console.log("  bun run ui:add <comp1> <comp2> Add multiple components");
-    console.log(
-      "  bun run ui:add --all           Add all available components",
-    );
+    console.log("  bun run ui:add --all           Add all available components");
     console.log("\nExamples:");
     console.log("  bun run ui:add button");
     console.log("  bun run ui:add button card input");

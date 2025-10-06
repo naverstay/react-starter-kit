@@ -28,12 +28,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <api.Provider client={trpcClient} queryClient={queryClient}>
         <RouterProvider router={router} />
-        {import.meta.env.DEV && (
-          <ReactQueryDevtools
-            initialIsOpen={false}
-            buttonPosition="bottom-right"
-          />
-        )}
+        {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />}
       </api.Provider>
     </QueryClientProvider>
   </StrictMode>,

@@ -11,12 +11,7 @@ interface EmailVerificationProps {
   appUrl?: string;
 }
 
-export function EmailVerification({
-  userName,
-  verificationUrl,
-  appName,
-  appUrl,
-}: EmailVerificationProps) {
+export function EmailVerification({ userName, verificationUrl, appName, appUrl }: EmailVerificationProps) {
   const preview = `Verify your email address for ${appName || "your account"}`;
 
   return (
@@ -26,8 +21,7 @@ export function EmailVerification({
       <Text style={paragraph}>Hi{userName ? ` ${userName}` : ""},</Text>
 
       <Text style={paragraph}>
-        Thanks for signing up! Please click the button below to verify your
-        email address and complete your account setup.
+        Thanks for signing up! Please click the button below to verify your email address and complete your account setup.
       </Text>
 
       <Section style={buttonContainer}>
@@ -36,20 +30,13 @@ export function EmailVerification({
         </Button>
       </Section>
 
-      <Text style={paragraph}>
-        Or copy and paste this URL into your browser:
-      </Text>
+      <Text style={paragraph}>Or copy and paste this URL into your browser:</Text>
 
       <Text style={linkText}>{verificationUrl}</Text>
 
-      <Text style={paragraph}>
-        This verification link will expire in 24 hours for security reasons.
-      </Text>
+      <Text style={paragraph}>This verification link will expire in 24 hours for security reasons.</Text>
 
-      <Text style={paragraph}>
-        If you didn't create an account with us, you can safely ignore this
-        email.
-      </Text>
+      <Text style={paragraph}>If you didn't create an account with us, you can safely ignore this email.</Text>
     </BaseTemplate>
   );
 }

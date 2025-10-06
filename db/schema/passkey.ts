@@ -9,13 +9,7 @@
  */
 
 import { sql } from "drizzle-orm";
-import {
-  boolean,
-  integer,
-  pgTable,
-  text,
-  timestamp,
-} from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { user } from "./user";
 
 /**
@@ -56,9 +50,7 @@ export const passkey = pgTable("passkey", {
   aaguid: text("aaguid"),
 
   // Timestamp when the passkey was registered
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
 });
 
 export type Passkey = typeof passkey.$inferSelect;

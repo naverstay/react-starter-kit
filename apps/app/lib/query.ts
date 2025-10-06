@@ -49,10 +49,7 @@ queryClient.setMutationDefaults(["trpc"], {
     if (error instanceof TRPCClientError) {
       const trpcError = error as TRPCClientError<AppRouter>;
       // Handle 401 unauthorized errors
-      if (
-        trpcError.data?.code === "UNAUTHORIZED" ||
-        trpcError.message?.includes("401")
-      ) {
+      if (trpcError.data?.code === "UNAUTHORIZED" || trpcError.message?.includes("401")) {
         // Trigger re-authentication flow
         window.location.href = "/login";
       }

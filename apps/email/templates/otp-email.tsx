@@ -12,13 +12,7 @@ interface OTPEmailProps {
   expiresInMinutes?: number;
 }
 
-export function OTPEmail({
-  otp,
-  type,
-  appName,
-  appUrl,
-  expiresInMinutes = 5,
-}: OTPEmailProps) {
+export function OTPEmail({ otp, type, appName, appUrl, expiresInMinutes = 5 }: OTPEmailProps) {
   // [CONTENT_MAPPING] Maps type enum to user-facing labels and descriptions
   const typeLabels = {
     "sign-in": "Sign In",
@@ -40,28 +34,22 @@ export function OTPEmail({
     <BaseTemplate preview={preview} appName={appName} appUrl={appUrl}>
       <Heading style={heading}>Your {typeLabel} Code</Heading>
 
-      <Text style={paragraph}>
-        Use the verification code below to {typeDescription}:
-      </Text>
+      <Text style={paragraph}>Use the verification code below to {typeDescription}:</Text>
 
       <Section style={otpContainer}>
         <Text style={otpText}>{otp}</Text>
       </Section>
 
       <Text style={paragraph}>
-        <strong>This code will expire in {expiresInMinutes} minutes</strong> for
-        security reasons.
+        <strong>This code will expire in {expiresInMinutes} minutes</strong> for security reasons.
       </Text>
 
-      <Text style={paragraph}>
-        If you didn't request this code, you can safely ignore this email.
-      </Text>
+      <Text style={paragraph}>If you didn't request this code, you can safely ignore this email.</Text>
 
       {/* WARNING: Security notice shown only for password reset to emphasize risk */}
       {type === "forget-password" && (
         <Text style={securityNote}>
-          <strong>Security tip:</strong> Never share this verification code with
-          anyone. Our support team will never ask for your verification codes.
+          <strong>Security tip:</strong> Never share this verification code with anyone. Our support team will never ask for your verification codes.
         </Text>
       )}
     </BaseTemplate>

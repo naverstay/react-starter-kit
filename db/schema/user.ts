@@ -42,9 +42,7 @@ export const user = pgTable("user", {
     .$default(() => false)
     .notNull(),
   // Timestamps
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
     .defaultNow()
     .$onUpdate(() => new Date())
@@ -64,9 +62,7 @@ export const session = pgTable("session", {
     mode: "date",
   }).notNull(),
   token: text("token").notNull().unique(),
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
     .defaultNow()
     .$onUpdate(() => new Date())
@@ -106,9 +102,7 @@ export const identity = pgTable("identity", {
   }),
   scope: text("scope"),
   password: text("password"),
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
     .defaultNow()
     .$onUpdate(() => new Date())
@@ -129,9 +123,7 @@ export const verification = pgTable("verification", {
     withTimezone: true,
     mode: "date",
   }).notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
-    .defaultNow()
-    .notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
     .defaultNow()
     .$onUpdate(() => new Date())

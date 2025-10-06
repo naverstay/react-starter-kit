@@ -8,19 +8,14 @@ import { globby } from "globby";
 /**
  * Execute a command using execa with proper error handling
  */
-export async function execCommand(
-  command: string,
-  args: string[],
-): Promise<void> {
+export async function execCommand(command: string, args: string[]): Promise<void> {
   try {
     await execa(command, args, {
       stdio: "inherit",
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    throw new Error(
-      `Command failed: ${command} ${args.join(" ")} - ${message}`,
-    );
+    throw new Error(`Command failed: ${command} ${args.join(" ")} - ${message}`);
   }
 }
 
@@ -30,12 +25,9 @@ export async function execCommand(
 export async function formatGeneratedFiles(): Promise<void> {
   try {
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const componentFiles = await globby(
-      join(__dirname, "../components/**/*.{ts,tsx}"),
-      {
-        absolute: true,
-      },
-    );
+    const componentFiles = await globby(join(__dirname, "../components/**/*.{ts,tsx}"), {
+      absolute: true,
+    });
 
     if (componentFiles.length === 0) {
       return;

@@ -1,24 +1,9 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  Avatar,
-  AvatarFallback,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Input,
-} from "@repo/ui";
+import { Avatar, AvatarFallback, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input } from "@repo/ui";
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  MoreVertical,
-  Search,
-  UserPlus,
-  Users as UsersIcon,
-} from "lucide-react";
+import { MoreVertical, Search, UserPlus, Users as UsersIcon } from "lucide-react";
 
 export const Route = createFileRoute("/(app)/users")({
   component: Users,
@@ -73,9 +58,7 @@ function Users() {
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold">Users</h2>
-          <p className="text-muted-foreground">
-            Manage user accounts and permissions.
-          </p>
+          <p className="text-muted-foreground">Manage user accounts and permissions.</p>
         </div>
         <Button className="gap-2">
           <UserPlus className="h-4 w-4" />
@@ -92,9 +75,7 @@ function Users() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,234</div>
-            <p className="text-xs text-muted-foreground">
-              +10% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+10% from last month</p>
           </CardContent>
         </Card>
         <Card>
@@ -109,16 +90,12 @@ function Users() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              New This Month
-            </CardTitle>
+            <CardTitle className="text-sm font-medium">New This Month</CardTitle>
             <UserPlus className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">48</div>
-            <p className="text-xs text-muted-foreground">
-              +32% from last month
-            </p>
+            <p className="text-xs text-muted-foreground">+32% from last month</p>
           </CardContent>
         </Card>
       </div>
@@ -167,31 +144,23 @@ function Users() {
                           </Avatar>
                           <div>
                             <p className="font-medium">{user.name}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {user.email}
-                            </p>
+                            <p className="text-sm text-muted-foreground">{user.email}</p>
                           </div>
                         </div>
                       </td>
                       <td className="p-4">
-                        <span className="px-2 py-1 text-xs font-medium rounded-full bg-secondary">
-                          {user.role}
-                        </span>
+                        <span className="px-2 py-1 text-xs font-medium rounded-full bg-secondary">{user.role}</span>
                       </td>
                       <td className="p-4">
                         <span
                           className={`px-2 py-1 text-xs font-medium rounded-full ${
-                            user.status === "Active"
-                              ? "bg-green-100 text-green-700"
-                              : "bg-gray-100 text-gray-700"
+                            user.status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-700"
                           }`}
                         >
                           {user.status}
                         </span>
                       </td>
-                      <td className="p-4 text-sm text-muted-foreground">
-                        {user.lastActive}
-                      </td>
+                      <td className="p-4 text-sm text-muted-foreground">{user.lastActive}</td>
                       <td className="p-4">
                         <Button variant="ghost" size="sm">
                           <MoreVertical className="h-4 w-4" />

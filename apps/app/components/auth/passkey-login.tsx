@@ -12,11 +12,7 @@ interface PasskeyLoginProps {
   isDisabled?: boolean;
 }
 
-export function PasskeyLogin({
-  onSuccess,
-  onError,
-  isDisabled,
-}: PasskeyLoginProps) {
+export function PasskeyLogin({ onSuccess, onError, isDisabled }: PasskeyLoginProps) {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showEmailInput, setShowEmailInput] = useState(false);
@@ -31,8 +27,7 @@ export function PasskeyLogin({
         return;
       }
 
-      const isAvailable =
-        await window.PublicKeyCredential.isConditionalMediationAvailable();
+      const isAvailable = await window.PublicKeyCredential.isConditionalMediationAvailable();
       if (!isAvailable) {
         return;
       }
@@ -95,23 +90,15 @@ export function PasskeyLogin({
       } else if (result.error) {
         // Handle specific error cases based on error message
         const errorMessage = result.error.message || "";
-        if (
-          errorMessage.includes("not found") ||
-          errorMessage.includes("No passkey")
-        ) {
+        if (errorMessage.includes("not found") || errorMessage.includes("No passkey")) {
           if (!showEmailInput) {
             // Show email input for passkey
             setShowEmailInput(true);
             onError("Please enter your email to sign in with passkey.");
           } else {
-            onError(
-              "No passkey found for this email. Please sign in with Google first, then register a passkey from your account settings.",
-            );
+            onError("No passkey found for this email. Please sign in with Google first, then register a passkey from your account settings.");
           }
-        } else if (
-          errorMessage.includes("cancelled") ||
-          errorMessage.includes("aborted")
-        ) {
+        } else if (errorMessage.includes("cancelled") || errorMessage.includes("aborted")) {
           onError("Passkey authentication was cancelled.");
         } else {
           onError(errorMessage || "Failed to sign in with passkey");
@@ -122,9 +109,7 @@ export function PasskeyLogin({
       // Provide helpful error messages
       if (err instanceof Error) {
         if (err.message.includes("NotAllowedError")) {
-          onError(
-            "Passkey operation was cancelled or timed out. Please try again.",
-          );
+          onError("Passkey operation was cancelled or timed out. Please try again.");
         } else if (err.message.includes("NotSupportedError")) {
           onError("Passkeys are not supported on this device or browser.");
         } else {
@@ -159,23 +144,11 @@ export function PasskeyLogin({
           required
           autoFocus
         />
-        <Button
-          type="button"
-          variant="default"
-          className="w-full"
-          onClick={handlePasskeyLogin}
-          disabled={disabled || !email}
-        >
+        <Button type="button" variant="default" className="w-full" onClick={handlePasskeyLogin} disabled={disabled || !email}>
           <KeyRound className="mr-2 h-4 w-4" />
           Continue with passkey
         </Button>
-        <Button
-          type="button"
-          variant="ghost"
-          className="w-full text-sm"
-          onClick={handleReset}
-          disabled={disabled}
-        >
+        <Button type="button" variant="ghost" className="w-full text-sm" onClick={handleReset} disabled={disabled}>
           Try a different method
         </Button>
       </div>
@@ -183,13 +156,7 @@ export function PasskeyLogin({
   }
 
   return (
-    <Button
-      type="button"
-      variant="default"
-      className="w-full"
-      onClick={handlePasskeyLogin}
-      disabled={disabled}
-    >
+    <Button type="button" variant="default" className="w-full" onClick={handlePasskeyLogin} disabled={disabled}>
       <KeyRound className="mr-2 h-4 w-4" />
       Sign in with passkey
     </Button>

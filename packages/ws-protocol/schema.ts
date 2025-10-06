@@ -9,10 +9,4 @@ import { createMessageSchema } from "bun-ws-router/zod";
  * This ensures both the library and app use the same Zod instance,
  * avoiding dual package hazard issues with discriminated unions.
  */
-export const {
-  messageSchema,
-  createMessage,
-  ErrorMessage,
-  ErrorCode,
-  MessageMetadataSchema,
-} = createMessageSchema(z);
+export const { messageSchema, createMessage, ErrorMessage, ErrorCode, MessageMetadataSchema } = createMessageSchema(z);

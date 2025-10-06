@@ -37,8 +37,7 @@ export const envSchema = z.object({
  * // In Cloudflare Workers (must use context)
  * const dbUrl = context.env.DATABASE_URL;
  */
-export const env =
-  typeof Bun === "undefined" ? ({} as Env) : envSchema.parse(Bun.env);
+export const env = typeof Bun === "undefined" ? ({} as Env) : envSchema.parse(Bun.env);
 
 /**
  * Type-safe environment variables interface.

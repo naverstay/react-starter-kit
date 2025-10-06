@@ -135,7 +135,7 @@ export interface Props {
   description?: string;
 }
 
-const { title = 'Your Site Title', description } = Astro.props;
+const { title = "Your Site Title", description } = Astro.props;
 ---
 
 <!doctype html>
@@ -156,18 +156,14 @@ Interactive components using React (only where needed):
 
 ```astro
 ---
-import { Button } from '@repo/ui';
+import { Button } from "@repo/ui";
 ---
 
 <!-- Only hydrate on visibility for performance -->
-<Button client:visible>
-  Interactive Button
-</Button>
+<Button client:visible> Interactive Button </Button>
 
 <!-- Or load immediately if critical -->
-<Button client:load>
-  Critical Button
-</Button>
+<Button client:load> Critical Button </Button>
 ```
 
 ### Shared UI Components
@@ -195,10 +191,7 @@ For dynamic content (if needed):
 ---
 // pages/blog/[slug].astro
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'hello-world' } },
-    { params: { slug: 'astro-is-awesome' } },
-  ];
+  return [{ params: { slug: "hello-world" } }, { params: { slug: "astro-is-awesome" } }];
 }
 
 const { slug } = Astro.params;

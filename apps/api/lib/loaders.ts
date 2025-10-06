@@ -25,10 +25,7 @@ export const USER_BY_ID = Symbol("userById");
 export const USER_BY_EMAIL = Symbol("userByEmail");
 export const PRODUCT_BY_ID = Symbol("productById");
 
-function createKeyMap<T, K extends keyof T>(
-  items: T[],
-  keyField: K,
-): Map<T[K], T> {
+function createKeyMap<T, K extends keyof T>(items: T[], keyField: K): Map<T[K], T> {
   return new Map(items.map((item) => [item[keyField], item]));
 }
 
@@ -46,10 +43,7 @@ export function userById(ctx: TRPCContext) {
     });
     ctx.cache.set(USER_BY_ID, loader);
   }
-  return ctx.cache.get(USER_BY_ID) as DataLoader<
-    string,
-    typeof user.$inferSelect | null
-  >;
+  return ctx.cache.get(USER_BY_ID) as DataLoader<string, typeof user.$inferSelect | null>;
 }
 
 export function userByEmail(ctx: TRPCContext) {
@@ -66,10 +60,7 @@ export function userByEmail(ctx: TRPCContext) {
     });
     ctx.cache.set(USER_BY_EMAIL, loader);
   }
-  return ctx.cache.get(USER_BY_EMAIL) as DataLoader<
-    string,
-    typeof user.$inferSelect | null
-  >;
+  return ctx.cache.get(USER_BY_EMAIL) as DataLoader<string, typeof user.$inferSelect | null>;
 }
 
 export function productById(ctx: TRPCContext) {
@@ -89,10 +80,7 @@ export function productById(ctx: TRPCContext) {
     ctx.cache.set(PRODUCT_BY_ID, loader);
   }
 
-  return ctx.cache.get(PRODUCT_BY_ID) as DataLoader<
-    string,
-    typeof product.$inferSelect | null
-  >;
+  return ctx.cache.get(PRODUCT_BY_ID) as DataLoader<string, typeof product.$inferSelect | null>;
 }
 
 export async function addProduct(
@@ -116,19 +104,11 @@ export async function addProduct(
   const existing = await ctx.db
     .select()
     .from(product)
-    .where(
-      or(
-        eq(product.name_de, name_de),
-        eq(product.name_en, name_en ?? ""),
-        eq(product.name_ru, name_ru ?? ""),
-      ),
-    )
+    .where(or(eq(product.name_de, name_de), eq(product.name_en, name_en ?? ""), eq(product.name_ru, name_ru ?? "")))
     .limit(1);
 
   if (existing.length > 0) {
-    console.log(
-      `⚠️ Продукт "${name_de}" уже существует, добавление пропущено.`,
-    );
+    console.log(`⚠️ Продукт "${name_de}" уже существует, добавление пропущено.`);
     return existing[0];
   }
 
@@ -150,10 +130,7 @@ export async function addProduct(
 
   // Инвалидируем кэш productById
   if (ctx.cache.has(PRODUCT_BY_ID)) {
-    const loader = ctx.cache.get(PRODUCT_BY_ID) as DataLoader<
-      string,
-      typeof product.$inferSelect | null
-    >;
+    const loader = ctx.cache.get(PRODUCT_BY_ID) as DataLoader<string, typeof product.$inferSelect | null>;
     loader.clear(newProduct.id).prime(newProduct.id, newProduct);
   }
 

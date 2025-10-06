@@ -6,8 +6,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import type { CreateTRPCReact } from "@trpc/react-query";
 import { createTRPCReact } from "@trpc/react-query";
 
-export const api: CreateTRPCReact<AppRouter, unknown> =
-  createTRPCReact<AppRouter>();
+export const api: CreateTRPCReact<AppRouter, unknown> = createTRPCReact<AppRouter>();
 
 // Build links array conditionally based on environment
 const links = [];
@@ -17,9 +16,7 @@ if (import.meta.env.DEV) {
   links.push(
     loggerLink({
       enabled: (opts) =>
-        (process.env.NODE_ENV === "development" &&
-          typeof window !== "undefined") ||
-        (opts.direction === "down" && opts.result instanceof Error),
+        (process.env.NODE_ENV === "development" && typeof window !== "undefined") || (opts.direction === "down" && opts.result instanceof Error),
     }),
   );
 }

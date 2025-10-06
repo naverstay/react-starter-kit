@@ -174,10 +174,7 @@ import { Button } from "@repo/ui/components";
 
 export function GradientButton({ children, ...props }) {
   return (
-    <Button
-      className="bg-gradient-to-r from-blue-500 to-purple-600 text-white"
-      {...props}
-    >
+    <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white" {...props}>
       {children}
     </Button>
   );
@@ -189,14 +186,7 @@ export function GradientButton({ children, ...props }) {
 Build complex UI by composing primitives:
 
 ```tsx
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui/components";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@repo/ui/components";
 
 export function FeatureCard({ title, description, action }) {
   return (
@@ -223,13 +213,7 @@ Always use the `cn` utility for conditional classes:
 ```tsx
 import { cn } from "@repo/ui/lib/utils";
 
-<Button
-  className={cn(
-    "transition-colors",
-    isActive && "bg-blue-500",
-    isDisabled && "opacity-50 cursor-not-allowed",
-  )}
-/>;
+<Button className={cn("transition-colors", isActive && "bg-blue-500", isDisabled && "opacity-50 cursor-not-allowed")} />;
 ```
 
 ### 2. Maintain Consistency
@@ -255,9 +239,7 @@ All shadcn/ui components include:
 
 ```tsx
 // Lazy load heavy components
-const Dialog = lazy(() =>
-  import("@repo/ui/components").then((m) => ({ default: m.Dialog })),
-);
+const Dialog = lazy(() => import("@repo/ui/components").then((m) => ({ default: m.Dialog })));
 ```
 
 ## Adding Custom Components
@@ -302,11 +284,7 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState("light");
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-    >
+    <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
       {theme === "light" ? <Moon /> : <Sun />}
     </Button>
   );
@@ -357,11 +335,7 @@ If styles aren't applying correctly:
 ```js
 // apps/app/tailwind.config.js
 export default {
-  content: [
-    "./index.html",
-    "./routes/**/*.{js,ts,jsx,tsx}",
-    "../../packages/ui/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./routes/**/*.{js,ts,jsx,tsx}", "../../packages/ui/components/**/*.{js,ts,jsx,tsx}"],
   // ...
 };
 ```

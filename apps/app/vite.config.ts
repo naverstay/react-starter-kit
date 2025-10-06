@@ -9,12 +9,7 @@ import { loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineProject } from "vitest/config";
 
-const publicEnvVars = [
-  "APP_NAME",
-  "APP_ORIGIN",
-  "GOOGLE_CLOUD_PROJECT",
-  "GA_MEASUREMENT_ID",
-];
+const publicEnvVars = ["APP_NAME", "APP_ORIGIN", "GOOGLE_CLOUD_PROJECT", "GA_MEASUREMENT_ID"];
 
 /**
  * Vite configuration.
@@ -41,12 +36,7 @@ export default defineProject(({ mode }) => {
           manualChunks: {
             react: ["react", "react-dom"],
             tanstack: ["@tanstack/react-router"],
-            ui: [
-              "@radix-ui/react-slot",
-              "class-variance-authority",
-              "clsx",
-              "tailwind-merge",
-            ],
+            ui: ["@radix-ui/react-slot", "class-variance-authority", "clsx", "tailwind-merge"],
           },
         },
       },

@@ -12,17 +12,8 @@ interface HeaderProps {
 export function Header({ isSidebarOpen, onMenuToggle }: HeaderProps) {
   return (
     <header className="h-14 border-b bg-background flex items-center px-4 gap-4">
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={onMenuToggle}
-        className="shrink-0"
-      >
-        {isSidebarOpen ? (
-          <X className="h-5 w-5" />
-        ) : (
-          <Menu className="h-5 w-5" />
-        )}
+      <Button variant="ghost" size="icon" onClick={onMenuToggle} className="shrink-0">
+        {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
 
       <div className="flex-1 flex items-center gap-4">

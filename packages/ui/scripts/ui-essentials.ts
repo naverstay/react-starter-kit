@@ -42,26 +42,16 @@ async function installEssentials(): Promise<void> {
   if (args.includes("--help") || args.includes("-h")) {
     console.log("🎯 shadcn/ui Essential Components Installer");
     console.log("===========================================\n");
-    console.log(
-      "Installs a curated set of essential shadcn/ui components for most applications.\n",
-    );
+    console.log("Installs a curated set of essential shadcn/ui components for most applications.\n");
     console.log("Essential components include:");
-    console.log(
-      "• Forms: button, input, textarea, select, checkbox, radio-group, switch, label, form",
-    );
+    console.log("• Forms: button, input, textarea, select, checkbox, radio-group, switch, label, form");
     console.log("• Layout: card, separator, skeleton, scroll-area");
     console.log("• Navigation: navigation-menu, breadcrumb, tabs");
-    console.log(
-      "• Feedback: dialog, alert-dialog, toast, alert, badge, progress",
-    );
+    console.log("• Feedback: dialog, alert-dialog, toast, alert, badge, progress");
     console.log("• Data Display: avatar, tooltip, popover\n");
     console.log("Usage:");
-    console.log(
-      "  bun run ui:essentials          Install all essential components",
-    );
-    console.log(
-      "  bun run ui:essentials --list   List essential components without installing",
-    );
+    console.log("  bun run ui:essentials          Install all essential components");
+    console.log("  bun run ui:essentials --list   List essential components without installing");
     process.exit(0);
   }
 
@@ -81,17 +71,10 @@ async function installEssentials(): Promise<void> {
 
   console.log("🎯 Installing Essential shadcn/ui Components");
   console.log("=============================================\n");
-  console.log(
-    `Installing ${ESSENTIAL_COMPONENTS.length} essential components...\n`,
-  );
+  console.log(`Installing ${ESSENTIAL_COMPONENTS.length} essential components...\n`);
 
   try {
-    const shadcnArgs = [
-      "shadcn@latest",
-      "add",
-      ...ESSENTIAL_COMPONENTS,
-      "--yes",
-    ];
+    const shadcnArgs = ["shadcn@latest", "add", ...ESSENTIAL_COMPONENTS, "--yes"];
 
     await execCommand("bunx", shadcnArgs);
 

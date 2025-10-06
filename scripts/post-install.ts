@@ -10,15 +10,9 @@ import { EOL } from "node:os";
 if (!existsSync("./.env.local")) {
   await writeFile(
     "./.env.local",
-    [
-      `# Overrides for the \`.env\` file in the root folder.`,
-      "#",
-      "# CLOUDFLARE_API_TOKEN=xxxxx",
-      "#",
-      "",
-      "API_URL=http://localhost:8080",
-      "",
-    ].join(EOL),
+    [`# Overrides for the \`.env\` file in the root folder.`, "#", "# CLOUDFLARE_API_TOKEN=xxxxx", "#", "", "API_URL=http://localhost:8080", ""].join(
+      EOL,
+    ),
     "utf-8",
   );
 }

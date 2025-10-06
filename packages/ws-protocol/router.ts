@@ -43,9 +43,7 @@ export function createWSRouter() {
 
   router.onClose((c) => {
     const duration = Date.now() - (c.ws.data.connectedAt || Date.now());
-    console.log(
-      `[WS] Client disconnected: ${c.ws.data.clientId} after ${Math.round(duration / 1000)}s`,
-    );
+    console.log(`[WS] Client disconnected: ${c.ws.data.clientId} after ${Math.round(duration / 1000)}s`);
   });
 
   // Handle PING messages
@@ -71,11 +69,7 @@ export function createWSRouter() {
 /**
  * Helper to send an error message.
  */
-export function sendError(
-  ws: { send: (data: string) => void },
-  code: "INVALID_MESSAGE" | "UNAUTHORIZED" | "SERVER_ERROR",
-  message: string,
-) {
+export function sendError(ws: { send: (data: string) => void }, code: "INVALID_MESSAGE" | "UNAUTHORIZED" | "SERVER_ERROR", message: string) {
   const error = createMessage(ErrorSchema, { code, message });
   if (error.success) {
     ws.send(JSON.stringify(error.data));

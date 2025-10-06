@@ -1,13 +1,7 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui";
 import { createFileRoute } from "@tanstack/react-router";
 import { Activity, FileText, TrendingUp, Users } from "lucide-react";
 
@@ -47,9 +41,7 @@ function Dashboard() {
     <div className="p-6 space-y-6">
       <div>
         <h2 className="text-2xl font-bold">Dashboard</h2>
-        <p className="text-muted-foreground">
-          Welcome back! Here's an overview of your application.
-        </p>
+        <p className="text-muted-foreground">Welcome back! Here's an overview of your application.</p>
       </div>
 
       {/* Stats Grid */}
@@ -57,16 +49,13 @@ function Dashboard() {
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {stat.title}
-              </CardTitle>
+              <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
               <stat.icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
               <p className="text-xs text-muted-foreground">
-                <span className="text-green-600">{stat.change}</span> from last
-                month
+                <span className="text-green-600">{stat.change}</span> from last month
               </p>
             </CardContent>
           </Card>
@@ -104,31 +93,19 @@ function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                className="p-4 text-left border rounded-lg hover:bg-accent transition-colors"
-              >
+              <button type="button" className="p-4 text-left border rounded-lg hover:bg-accent transition-colors">
                 <FileText className="h-5 w-5 mb-2" />
                 <p className="text-sm font-medium">Generate Report</p>
               </button>
-              <button
-                type="button"
-                className="p-4 text-left border rounded-lg hover:bg-accent transition-colors"
-              >
+              <button type="button" className="p-4 text-left border rounded-lg hover:bg-accent transition-colors">
                 <Users className="h-5 w-5 mb-2" />
                 <p className="text-sm font-medium">Manage Users</p>
               </button>
-              <button
-                type="button"
-                className="p-4 text-left border rounded-lg hover:bg-accent transition-colors"
-              >
+              <button type="button" className="p-4 text-left border rounded-lg hover:bg-accent transition-colors">
                 <Activity className="h-5 w-5 mb-2" />
                 <p className="text-sm font-medium">View Analytics</p>
               </button>
-              <button
-                type="button"
-                className="p-4 text-left border rounded-lg hover:bg-accent transition-colors"
-              >
+              <button type="button" className="p-4 text-left border rounded-lg hover:bg-accent transition-colors">
                 <TrendingUp className="h-5 w-5 mb-2" />
                 <p className="text-sm font-medium">Export Data</p>
               </button>

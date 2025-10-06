@@ -61,13 +61,8 @@ async function listComponents(): Promise<void> {
     // Display components
     for (const component of components) {
       const formattedSize = component.size.toLocaleString();
-      const formattedDate = component.modified
-        .toISOString()
-        .slice(0, 16)
-        .replace("T", " ");
-      console.log(
-        `• ${component.name.padEnd(20)} ${formattedSize.padStart(8)} bytes  ${formattedDate}`,
-      );
+      const formattedDate = component.modified.toISOString().slice(0, 16).replace("T", " ");
+      console.log(`• ${component.name.padEnd(20)} ${formattedSize.padStart(8)} bytes  ${formattedDate}`);
     }
 
     console.log("\n📊 Summary:");

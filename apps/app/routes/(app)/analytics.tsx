@@ -1,13 +1,7 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui";
 import { createFileRoute } from "@tanstack/react-router";
 import { Activity, DollarSign, TrendingUp, Users } from "lucide-react";
 
@@ -51,9 +45,7 @@ function Analytics() {
     <div className="p-6 space-y-6">
       <div>
         <h2 className="text-2xl font-bold">Analytics</h2>
-        <p className="text-muted-foreground">
-          Track your application's performance and user engagement metrics.
-        </p>
+        <p className="text-muted-foreground">Track your application's performance and user engagement metrics.</p>
       </div>
 
       {/* Metrics Grid */}
@@ -61,9 +53,7 @@ function Analytics() {
         {metrics.map((metric) => (
           <Card key={metric.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {metric.title}
-              </CardTitle>
+              <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
               <metric.icon className={`h-4 w-4 ${metric.color}`} />
             </CardHeader>
             <CardContent>
@@ -79,9 +69,7 @@ function Analytics() {
         <Card>
           <CardHeader>
             <CardTitle>Revenue Overview</CardTitle>
-            <CardDescription>
-              Monthly revenue for the past 6 months
-            </CardDescription>
+            <CardDescription>Monthly revenue for the past 6 months</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="h-64 flex items-center justify-center text-muted-foreground">
@@ -115,9 +103,7 @@ function Analytics() {
       <Card>
         <CardHeader>
           <CardTitle>Top Pages</CardTitle>
-          <CardDescription>
-            Most visited pages in your application
-          </CardDescription>
+          <CardDescription>Most visited pages in your application</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -132,15 +118,10 @@ function Analytics() {
                 <div className="flex-1">
                   <div className="flex justify-between mb-1">
                     <span className="text-sm font-medium">{item.page}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {item.views.toLocaleString()} views
-                    </span>
+                    <span className="text-sm text-muted-foreground">{item.views.toLocaleString()} views</span>
                   </div>
                   <div className="w-full bg-secondary rounded-full h-2">
-                    <div
-                      className="bg-primary h-2 rounded-full"
-                      style={{ width: `${item.percentage}%` }}
-                    />
+                    <div className="bg-primary h-2 rounded-full" style={{ width: `${item.percentage}%` }} />
                   </div>
                 </div>
               </div>

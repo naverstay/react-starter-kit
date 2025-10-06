@@ -318,12 +318,7 @@ export const Route = createFileRoute("/dashboard")({
 // Use optimized image loading
 import { Image } from "@repo/ui";
 
-<Image
-  src="/hero.jpg"
-  alt="Hero"
-  loading="lazy"
-  sizes="(max-width: 768px) 100vw, 50vw"
-/>;
+<Image src="/hero.jpg" alt="Hero" loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" />;
 ```
 
 ## Testing

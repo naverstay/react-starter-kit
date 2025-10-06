@@ -1,12 +1,7 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {
-  anonymousClient,
-  emailOTPClient,
-  organizationClient,
-  passkeyClient,
-} from "better-auth/client/plugins";
+import { anonymousClient, emailOTPClient, organizationClient, passkeyClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 import { authConfig } from "./auth-config";
 
@@ -30,20 +25,12 @@ import { authConfig } from "./auth-config";
  */
 
 // Get the base URL from environment variable or use default for development
-const baseURL =
-  typeof window !== "undefined"
-    ? window.location.origin
-    : "http://localhost:5173";
+const baseURL = typeof window !== "undefined" ? window.location.origin : "http://localhost:5173";
 
 // Create the auth client with plugins and configuration
 export const authClient = createAuthClient({
   baseURL: baseURL + authConfig.api.basePath,
-  plugins: [
-    anonymousClient(),
-    emailOTPClient(),
-    organizationClient(),
-    passkeyClient(),
-  ],
+  plugins: [anonymousClient(), emailOTPClient(), organizationClient(), passkeyClient()],
 });
 
 // Alias for brevity - use either 'auth' or 'authClient' based on preference

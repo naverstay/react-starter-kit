@@ -44,21 +44,17 @@ export const organizationRouter = router({
       };
     }),
 
-  delete: protectedProcedure
-    .input(z.object({ id: z.string() }))
-    .mutation(({ input }) => {
-      // TODO: Implement organization deletion logic
-      return { success: true, id: input.id };
-    }),
+  delete: protectedProcedure.input(z.object({ id: z.string() })).mutation(({ input }) => {
+    // TODO: Implement organization deletion logic
+    return { success: true, id: input.id };
+  }),
 
-  members: protectedProcedure
-    .input(z.object({ organizationId: z.string() }))
-    .query(() => {
-      // TODO: Implement organization members listing
-      return {
-        members: [],
-      };
-    }),
+  members: protectedProcedure.input(z.object({ organizationId: z.string() })).query(() => {
+    // TODO: Implement organization members listing
+    return {
+      members: [],
+    };
+  }),
 
   invite: protectedProcedure
     .input(

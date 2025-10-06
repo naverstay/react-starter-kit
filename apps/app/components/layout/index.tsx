@@ -17,10 +17,7 @@ export function Layout({ children }: LayoutProps) {
       <Sidebar isOpen={sidebarOpen} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header
-          isSidebarOpen={sidebarOpen}
-          onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
-        />
+        <Header isSidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
         <main className="flex-1 overflow-auto">
           <div className="h-full">{children}</div>

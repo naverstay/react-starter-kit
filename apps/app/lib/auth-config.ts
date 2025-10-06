@@ -36,11 +36,7 @@ export const authConfig = {
   // Security configuration
   security: {
     // Allowed redirect origins (prevents open redirect attacks)
-    allowedRedirectOrigins: [
-      typeof window !== "undefined"
-        ? window.location.origin
-        : "http://localhost:5173",
-    ],
+    allowedRedirectOrigins: [typeof window !== "undefined" ? window.location.origin : "http://localhost:5173"],
     // CSRF token header name
     csrfTokenHeader: "x-csrf-token",
     // Session cookie name
@@ -81,8 +77,7 @@ export const authConfig = {
     unauthorized: "You need to sign in to access this page.",
     networkError: "Network error. Please check your connection and try again.",
     passkeyNotSupported: "Your browser doesn't support passkeys.",
-    passkeyNotFound:
-      "No passkey found for this account. Please sign in with Google first.",
+    passkeyNotFound: "No passkey found for this account. Please sign in with Google first.",
     genericError: "Something went wrong. Please try again.",
   },
 } as const;
@@ -134,21 +129,14 @@ export function getSafeRedirectUrl(url: unknown): string {
  * @param expiresAt - Session expiration time
  * @returns true if session should be refreshed (not expired but expiring soon)
  */
-export function shouldRefreshSession(
-  expiresAt: Date | string | undefined,
-): boolean {
+export function shouldRefreshSession(expiresAt: Date | string | undefined): boolean {
   if (!expiresAt) return false;
 
-  const expiryTime =
-    typeof expiresAt === "string"
-      ? new Date(expiresAt).getTime()
-      : expiresAt.getTime();
+  const expiryTime = typeof expiresAt === "string" ? new Date(expiresAt).getTime() : expiresAt.getTime();
 
   const now = Date.now();
   const timeUntilExpiry = expiryTime - now;
 
   // NOTE: Returns false for already-expired sessions (timeUntilExpiry <= 0)
-  return (
-    timeUntilExpiry > 0 && timeUntilExpiry < authConfig.session.refreshThreshold
-  );
+  return timeUntilExpiry > 0 && timeUntilExpiry < authConfig.session.refreshThreshold;
 }
