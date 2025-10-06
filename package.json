@@ -16,6 +16,10 @@
   "scripts": {
     "dev": "bun --filter @repo/web --filter @repo/api --filter @repo/app dev",
     "lint": "eslint --cache --report-unused-disable-directives .",
+    "lint:fix": "bunx eslint . --fix",
+    "format:check": "bunx prettier --check .",
+    "format": "bunx prettier --write .",
+    "check": "bun run format:check && bun run lint",
     "test": "vitest",
     "typecheck": "tsc --build",
     "build:types": "tsc --build",
@@ -108,10 +112,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "bunx eslint --max-warnings=0 --report-unused-disable-directives"
+      "bunx eslint --fix --max-warnings=0 --report-unused-disable-directives"
     ],
     "*": [
-      "bunx prettier --check --ignore-unknown"
+      "bunx prettier --write --ignore-unknown"
     ]
   },
   "dependencies": {
